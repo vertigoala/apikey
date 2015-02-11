@@ -1,12 +1,10 @@
 package apikey
 
-import org.springframework.web.context.request.RequestContextHolder
-
 class GetKeyController {
 
     def index() { }
 
-    def authService
+    LocalAuthService localAuthService
 
     def submit() {
         //check the permissions - only users with ADMIN can request a key

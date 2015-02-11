@@ -1,15 +1,21 @@
-// locations to search for config files that get merged into the main config;
-// config files can be ConfigSlurper scripts, Java properties files, or classes
-// in the classpath in ConfigSlurper format
-
-// grails.config.locations = [ "classpath:${appName}-config.properties",
-//                             "classpath:${appName}-config.groovy",
-//                             "file:${userHome}/.grails/${appName}-config.properties",
-//                             "file:${userHome}/.grails/${appName}-config.groovy"]
-
-// if (System.properties["${appName}.config.location"]) {
-//    grails.config.locations << "file:" + System.properties["${appName}.config.location"]
-// }
+def ENV_NAME = "${appName.toUpperCase()}_CONFIG"
+default_config = "/data/${appName}/config/${appName}-config.properties"
+if(!grails.config.locations || !(grails.config.locations instanceof List)) {
+    grails.config.locations = []
+}
+if(System.getenv(ENV_NAME) && new File(System.getenv(ENV_NAME)).exists()) {
+    println "[${appName}] Including configuration file specified in environment: " + System.getenv(ENV_NAME);
+    grails.config.locations.add "file:" + System.getenv(ENV_NAME)
+} else if(System.getProperty(ENV_NAME) && new File(System.getProperty(ENV_NAME)).exists()) {
+    println "[${appName}] Including configuration file specified on command line: " + System.getProperty(ENV_NAME);
+    grails.config.locations.add "file:" + System.getProperty(ENV_NAME)
+} else if(new File(default_config).exists()) {
+    println "[${appName}] Including default configuration file: " + default_config;
+    grails.config.locations.add "file:" + default_config
+} else {
+    println "[${appName}] No external configuration file defined."
+}
+println "[${appName}] (*) grails.config.locations = ${grails.config.locations}"
 
 grails.project.groupId = "au.org.ala" // change this to alter the default package name and Maven publishing destination
 grails.mime.file.extensions = true // enables the parsing of file extensions from URLs into the request format
@@ -89,3 +95,27 @@ log4j = {
            'org.hibernate',
            'net.sf.ehcache.hibernate'
 }
+
+// Uncomment and edit the following lines to start using Grails encoding & escaping improvements
+
+/* remove this line 
+// GSP settings
+grails {
+    views {
+        gsp {
+            encoding = 'UTF-8'
+            htmlcodec = 'xml' // use xml escaping instead of HTML4 escaping
+            codecs {
+                expression = 'html' // escapes values inside null
+                scriptlet = 'none' // escapes output from scriptlets in GSPs
+                taglib = 'none' // escapes output from taglibs
+                staticparts = 'none' // escapes output from static template parts
+            }
+        }
+        // escapes all not-encoded output at final stage of outputting
+        filteringCodecForContentType {
+            //'text/html' = 'html'
+        }
+    }
+}
+remove this line */

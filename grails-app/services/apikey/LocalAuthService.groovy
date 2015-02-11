@@ -2,7 +2,7 @@ package apikey
 
 import org.springframework.web.context.request.RequestContextHolder
 
-class AuthService {
+class LocalAuthService {
 
     def serviceMethod() {}
 
