@@ -1,8 +1,21 @@
 dataSource {
     pooled = true
     driverClassName = "com.mysql.jdbc.Driver"
-    username = "root"
-    password = "password"
+    username = ""
+    password = ""
+    properties {
+        // http://www.grails.org/doc/latest/guide/single.html#dataSource
+        // see http://tomcat.apache.org/tomcat-7.0-doc/jdbc-pool.html#Common_Attributes for more
+        timeBetweenEvictionRunsMillis = 60000 // milliseconds (default = 5000)
+        testOnBorrow = true // default = false
+        testOnReturn = false // default = false
+        testWhileIdle = true // default = false
+        validationQuery = "SELECT 1" // default = null
+        validationQueryTimeout = 10 //seconds (default = -1 i.e. disabled)
+        removeAbandoned = true // // default = false
+        removeAbandonedTimeout = 300 // seconds (default = 60)
+        logAbandoned = true // adds some overhead to every borrow from the pool, disable if it becomes a performance issue
+    }
 }
 hibernate {
     cache.use_second_level_cache = true
@@ -15,17 +28,7 @@ environments {
         dataSource {
             dbCreate = "update"
             url = "jdbc:mysql://localhost:3306/apikey"
-            pooled = true
-            properties {
-               maxActive = -1
-               minEvictableIdleTimeMillis=1800000
-               timeBetweenEvictionRunsMillis=1800000
-               numTestsPerEvictionRun=3
-               testOnBorrow=true
-               testWhileIdle=true
-               testOnReturn=true
-               validationQuery="SELECT 1"
-            }
+
         }
     }
     test {
@@ -37,18 +40,6 @@ environments {
     production {
         dataSource {
             dbCreate = ""
-            url = "jdbc:mysql://localhost:3306/apikey"
-            pooled = true
-            properties {
-               maxActive = -1
-               minEvictableIdleTimeMillis=1800000
-               timeBetweenEvictionRunsMillis=1800000
-               numTestsPerEvictionRun=3
-               testOnBorrow=true
-               testWhileIdle=true
-               testOnReturn=true
-               validationQuery="SELECT 1"
-            }
         }
     }
 }

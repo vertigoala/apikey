@@ -2,7 +2,7 @@ package apikey
 
 class AppController {
 
-    def authService
+    LocalAuthService localAuthService
 
     def index() {}
 
