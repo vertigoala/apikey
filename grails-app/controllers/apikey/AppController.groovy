@@ -9,9 +9,9 @@ class AppController {
     def addAnApp(){
         def result = App.findByName(params.name)
         if(!result){
-            if(authService.isAdmin()){
+            if(localAuthService.isAdmin()){
                 App app = new App([name:params.name])
-                def userDetails = authService.userDetails()
+                def userDetails = localAuthService.userDetails()
                 app.userId =  userDetails[0]
                 app.userEmail = userDetails[0]
                 app.save(true)
