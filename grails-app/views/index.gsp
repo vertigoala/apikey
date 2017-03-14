@@ -2,9 +2,9 @@
 <!doctype html>
 <html>
 <head>
-    <meta name="layout" content="main"/>
+    <meta name="layout" content="${grailsApplication.config.skin.layout}"/>
     <meta name="section" content="home"/>
-    <title>API keys | Atlas of Living Australia</title>
+    <title>API keys |  ${grailsApplication.config.skin.orgNameLong}</title>
 </head>
 <body>
 <div class="row-fluid">
@@ -13,10 +13,8 @@
         <h1>Get an API key</h1>
         <g:form action="submit" controller="getKey">
             <p>
-               This is currently only available for ALA developers.<br/>
+               This is currently only available for ${grailsApplication.config.skin.orgNameLong} developers.<br/>
                These keys give <b>write</b> access to certain applications.
-               If you think you should have access, send an email to
-               <a href="mailto:support@ala.org.au">support@ala.org.au</a>
             </p>
             <label for="appName">App name:</label>
             <g:select optionKey="name" optionValue="name" name="appName" from="${App.findAll()}" /><br/>

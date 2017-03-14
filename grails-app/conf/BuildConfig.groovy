@@ -37,8 +37,8 @@ grails.project.dependency.resolution = {
     plugins {
         runtime ":hibernate:3.6.10.2"
         runtime ":jquery:1.8.3"
-        runtime ":ala-bootstrap2:2.1"
-        runtime (":ala-auth:1.2") {
+        runtime ":ala-bootstrap2:2.4.5"
+        runtime (":ala-auth:1.3.4") {
             exclude "servlet-api"
         }
         // Uncomment these (or add new ones) to enable additional resources capabilities
