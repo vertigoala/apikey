@@ -1,9 +1,9 @@
-grails.servlet.version = "2.5" // Change depending on target container compliance (2.5 or 3.0)
+grails.servlet.version = "3.0" // Change depending on target container compliance (2.5 or 3.0)
 grails.project.class.dir = "target/classes"
 grails.project.test.class.dir = "target/test-classes"
 grails.project.test.reports.dir = "target/test-reports"
-grails.project.target.level = 1.6
-grails.project.source.level = 1.6
+grails.project.target.level = 1.7
+grails.project.source.level = 1.7
 //grails.project.war.file = "target/${appName}-${appVersion}.war"
 
 // uncomment (and adjust settings) to fork the JVM to isolate classpaths
@@ -31,26 +31,24 @@ grails.project.dependency.resolution = {
     dependencies {
         // specify dependencies here under either 'build', 'compile', 'runtime', 'test' or 'provided' scopes e.g.
 
-        runtime 'mysql:mysql-connector-java:5.1.20'
+        runtime 'mysql:mysql-connector-java:5.1.42'
     }
 
     plugins {
-        runtime ":hibernate:3.6.10.2"
-        runtime ":jquery:1.8.3"
-        runtime ":ala-bootstrap2:2.4.5"
-        runtime (":ala-auth:1.3.4") {
-            exclude "servlet-api"
-        }
+        runtime ":hibernate4:4.3.10"
+        runtime ":jquery:1.11.1"
+        runtime ":ala-bootstrap2:2.5.0-SNAPSHOT"
+        runtime ":ala-auth:2.1.3"
         // Uncomment these (or add new ones) to enable additional resources capabilities
         //runtime ":zipped-resources:1.0"
         //runtime ":cached-resources:1.0"
         //runtime ":yui-minify-resources:0.1.4"
 
-        build ":tomcat:2.2.0"
+        build ":tomcat:7.0.70"
 
-        runtime ":database-migration:1.2.1"
+        runtime ":database-migration:1.4.0"
 
-        compile ':cache:1.0.1'
+        compile ':cache:1.1.8'
 
         build ":release:3.0.1"
     }

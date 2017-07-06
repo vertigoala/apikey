@@ -34,6 +34,9 @@ environments {
     test {
         dataSource {
             dbCreate = "update"
+            driverClassName = "org.h2.Driver"
+            username = "sa"
+            password = ""
             url = "jdbc:h2:mem:testDb;MVCC=TRUE;LOCK_TIMEOUT=10000"
         }
     }
