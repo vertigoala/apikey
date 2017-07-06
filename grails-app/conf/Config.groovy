@@ -93,6 +93,12 @@ grails.hibernate.pass.readonly = false
 // configure passing read-only to OSIV session by default, requires "singleSession = false" OSIV mode
 grails.hibernate.osiv.readonly = false
 
+skin {
+    layout = 'main'
+    orgNameLong = 'Atlas of Living Australia'
+    orgNameShort = 'ALA'
+}
+
 security {
     cas {
         uriExclusionFilterPattern = '/images.*,/css.*,/js.*,/less.*'
