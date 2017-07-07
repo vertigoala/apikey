@@ -37,7 +37,7 @@ grails.project.dependency.resolution = {
     plugins {
         runtime ":hibernate4:4.3.10"
         runtime ":jquery:1.11.1"
-        runtime ":ala-bootstrap2:2.5.0-SNAPSHOT"
+        runtime ":ala-bootstrap2:2.5.0"
         runtime ":ala-auth:2.1.3"
         // Uncomment these (or add new ones) to enable additional resources capabilities
         //runtime ":zipped-resources:1.0"
