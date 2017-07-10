@@ -6,8 +6,8 @@
     <title>API key check | ${grailsApplication.config.skin.orgNameLong} </title>
 </head>
 <body>
-<div class="row-fluid">
-    <div class="span9" id="page-body" role="main">
+<div class="row">
+    <div class="col-md-9" id="page-body" role="main">
         <h1>Key ${valid ? 'is valid' : 'isnt valid'}</h1>
         <p>
           <g:if test="${key}">

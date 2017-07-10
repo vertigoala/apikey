@@ -11,6 +11,8 @@ grails.project.source.level = 1.7
 //   run: [maxMemory:1024, minMemory:64, debug:false, maxPerm:256]
 //]
 
+//grails.plugin.location."ala-bootstrap3" = "../ala-bootstrap3"
+
 grails.project.dependency.resolver = "maven"
 
 grails.project.dependency.resolution = {
@@ -37,8 +39,10 @@ grails.project.dependency.resolution = {
     plugins {
         runtime ":hibernate4:4.3.10"
         runtime ":jquery:1.11.1"
-        runtime ":ala-bootstrap2:2.5.0"
         runtime ":ala-auth:2.1.3"
+        runtime ":ala-bootstrap3:1.7.0-SNAPSHOT"
+//        runtime ':resources:1.2.14'
+        runtime ':asset-pipeline:2.14.1'
         // Uncomment these (or add new ones) to enable additional resources capabilities
         //runtime ":zipped-resources:1.0"
         //runtime ":cached-resources:1.0"
@@ -50,6 +54,6 @@ grails.project.dependency.resolution = {
 
         compile ':cache:1.1.8'
 
-        build ":release:3.0.1"
+        build ":release:3.1.1"
     }
 }

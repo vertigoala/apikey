@@ -6,8 +6,8 @@
     <title>Add an App | ${grailsApplication.config.skin.orgNameLong} </title>
 </head>
 <body>
-<div class="row-fluid">
-    <div class="span9" id="page-body" role="main">
+<div class="row">
+    <div class="col-md-9" id="page-body" role="main">
         <h1>${success ? 'App added' : 'App already exists'}</h1>
         <p>
           <g:if test="${success}">
@@ -16,7 +16,7 @@
           </g:if>
         </p>
 
-        <g:link url="/apikey" class="btn btn-ala">Back to options</g:link>
+        <g:link url="/apikey" class="btn btn-primary">Back to options</g:link>
     </div>
 
 </div>
