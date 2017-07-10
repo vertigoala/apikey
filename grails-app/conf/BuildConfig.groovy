@@ -41,12 +41,7 @@ grails.project.dependency.resolution = {
         runtime ":jquery:1.11.1"
         runtime ":ala-auth:2.1.3"
         runtime ":ala-bootstrap3:1.7.0-SNAPSHOT"
-//        runtime ':resources:1.2.14'
         runtime ':asset-pipeline:2.14.1'
-        // Uncomment these (or add new ones) to enable additional resources capabilities
-        //runtime ":zipped-resources:1.0"
-        //runtime ":cached-resources:1.0"
-        //runtime ":yui-minify-resources:0.1.4"
 
         build ":tomcat:7.0.70"
 
