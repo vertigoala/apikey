@@ -40,7 +40,7 @@ grails.project.dependency.resolution = {
         runtime ":hibernate4:4.3.10"
         runtime ":jquery:1.11.1"
         runtime ":ala-auth:2.1.3"
-        runtime ":ala-bootstrap3:1.7.0-SNAPSHOT"
+        runtime ":ala-bootstrap3:1.7.0"
         runtime ':asset-pipeline:2.14.1'
 
         build ":tomcat:7.0.70"
@@ -49,6 +49,6 @@ grails.project.dependency.resolution = {
 
         compile ':cache:1.1.8'
 
-        build ":release:3.1.1"
+        build ":release:3.1.2"
     }
 }
