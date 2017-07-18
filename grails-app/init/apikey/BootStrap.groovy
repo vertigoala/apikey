@@ -1,11 +1,12 @@
-import apikey.App
+package apikey
 
 class BootStrap {
 
     def init = { servletContext ->
-         preloadQueries()
+        preloadQueries()
     }
-    def destroy = {}
+    def destroy = {
+    }
 
     private def preloadQueries() {
         def appNames = []

@@ -1,3 +1,5 @@
+package apikey
+
 class UrlMappings {
 
 	static mappings = {
