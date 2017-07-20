@@ -3,6 +3,11 @@ grails:
     profile: web
     codegen:
         defaultPackage: apikey
+    config:
+        locations:
+            - file:/data/apikey/config/apikey-config.properties
+            - file:/data/apikey/config/apikey-config.yml
+            - file:/data/apikey/config/apikey-config.groovy
     spring:
         transactionManagement:
             proxies: false
@@ -43,10 +48,6 @@ grails:
             accept:
                 header:
                     userAgents:
-                        - Gecko
-                        - WebKit
-                        - Presto
-                        - Trident
         types:
             all: '*/*'
             atom: application/atom+xml
@@ -142,7 +143,7 @@ dataSource:
         testOnReturn: false # default = false
         testWhileIdle: true # default = false
         validationQuery: /* ping */ SELECT 1
-        validationQueryTimeout: 10 //seconds (default = -1 i.e. disabled)
+        validationQueryTimeout: 10 # seconds (default = -1 i.e. disabled)
         removeAbandoned: true # # default = false
         removeAbandonedTimeout: 300 # seconds (default = 60)
         logAbandoned: true # adds some overhead to every borrow from the pool, disable if it becomes a performance issue
