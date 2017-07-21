@@ -2,8 +2,6 @@
  *= require_self
  */
 
-#main .panel-title h1,
-#main .panel-title h2,
-#main .panel-title h3 {
+#main .panel-title {
     margin-bottom: 0;
 }

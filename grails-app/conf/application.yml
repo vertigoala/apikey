@@ -30,11 +30,6 @@ spring:
     groovy:
         template:
             check-template-location: false
-server:
-    tomcat:
-        port-header: 'X-Forwarded-Port'
-        protocol-header: 'X-Forwarded-Proto'
-        remote-ip-header: 'X-Forwarded-For'
 # Spring Actuator Endpoints are Disabled by Default
 endpoints:
     enabled: false
@@ -100,7 +95,7 @@ skin:
 
 security:
     cas:
-        uriFilterPattern: /testAuth.*,/upload.*,/getKey/submit,/app/addAnApp
+        uriFilterPattern: "/testAuth.*,/upload.*,/getKey/submit,/app/addAnApp"
 
 environments:
     development:
