@@ -33,7 +33,8 @@ repositories {
 }
 
 bootRepackage {
-    enabled = false
+    enabled = true
+    classifier = 'exec'
 }
 
 springBoot {
