@@ -62,7 +62,7 @@ if (Environment.isDevelopmentMode() && targetDir != null) {
     }
     logger("StackTrace", ERROR, ['FULL_STACKTRACE'], false)
 }
-root(WARN, ['STDOUT'])
+root(WARN, [TOMCAT_LOG])
 [
         (OFF): [],
         (ERROR): [
