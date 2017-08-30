@@ -56,11 +56,13 @@ dependencies {
     testRuntime "net.sourceforge.htmlunit:htmlunit:2.18"
 
     // grails plugins
-//    compile "org.grails.plugins:cache:3.0.3"
-    compile "org.grails.plugins:ala-auth:3.0.0"
-    compile "org.grails.plugins:ala-bootstrap3:3.0.0-SNAPSHOT"
+    compile "org.grails.plugins:ala-auth:3.0.2"
+//    compile "org.grails.plugins:ala-admin-plugin:2.0"
+    compile "org.grails.plugins:ala-bootstrap3:3.0.0"
 
     compile 'org.grails.plugins:external-config:1.1.1'
+
+    compile 'de.codecentric:spring-boot-admin-starter-client:1.5.3'
 
     // regular jar dependencies
     runtime 'mysql:mysql-connector-java:5.1.42'
