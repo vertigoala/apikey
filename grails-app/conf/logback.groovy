@@ -62,6 +62,8 @@ if (Environment.isDevelopmentMode() && targetDir != null) {
     }
     logger("StackTrace", ERROR, ['FULL_STACKTRACE'], false)
 }
+jmxConfigurator()
+
 root(WARN, [TOMCAT_LOG])
 [
         (OFF): [],
@@ -70,6 +72,7 @@ root(WARN, [TOMCAT_LOG])
         (WARN): [
         ],
         (INFO): [
+                'de.codecentric.boot.admin',
                 'grails.plugin.externalconfig.ExternalConfig',
                 'grails.app',
                 'au.org.ala'

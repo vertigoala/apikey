@@ -13,6 +13,10 @@ buildscript {
     }
 }
 
+plugins {
+    id "com.gorylenko.gradle-git-properties" version "1.4.17"
+}
+
 version "1.0-SNAPSHOT"
 group "au.org.ala"
 
@@ -70,6 +74,7 @@ dependencies {
 }
 
 springBoot {
+    buildInfo()
     providedConfiguration = "provided"
     layout = WAR
 }
