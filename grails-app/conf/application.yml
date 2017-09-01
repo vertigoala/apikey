@@ -96,12 +96,42 @@ skin:
 security:
     cas:
         uriFilterPattern: "/testAuth.*,/upload.*,/getKey/submit,/app/addAnApp"
-
+    filterOrder: 0
+    basic:
+        enabled: true
+        authorizeMode: role
+        realm: ALA User Details
+        path:
+          - /status/**
+endpoints:
+    enabled: false
+    sensitive: true
+    jmx:
+        unique-names: true
+    cors:
+        allow-credentials: true
+        allowed-methods:
+          - GET
+          - POST
+          - DELETE
+          - PUT
+        allowed-headers: "*"
+        allowed-origins: "*"
+management:
+    context-path: /status
+    security:
+        enabled: true
+        roles: ACTUATOR
 spring:
     boot:
         admin:
             client:
                 enabled: false
+                service-base-url: ${serverURL}
+                metadata:
+                    user:
+                        name: ${security.user.name}
+                        password: ${security.user.password}
 
 environments:
     development:
