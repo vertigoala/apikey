@@ -30,6 +30,8 @@ spring:
     groovy:
         template:
             check-template-location: false
+    session:
+        store-type: none
 # Spring Actuator Endpoints are Disabled by Default
 endpoints:
     enabled: false
@@ -89,9 +91,10 @@ endpoints:
         unique-names: true
 ---
 skin:
-    layout: main
-    orgNameLong: Atlas of Living Australia
-    orgNameShort: ALA
+    layout: "main"
+    fluidLayout: false
+    orgNameLong: "Atlas of Living Australia"
+    orgNameShort: "ALA"
 
 security:
     cas:

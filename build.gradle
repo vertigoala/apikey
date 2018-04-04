@@ -60,14 +60,21 @@ dependencies {
     testRuntime "net.sourceforge.htmlunit:htmlunit:2.18"
 
     // grails plugins
-    compile "org.grails.plugins:ala-auth:3.0.2"
+    compile "org.grails.plugins:ala-auth:3.0.3"
 //    compile "org.grails.plugins:ala-admin-plugin:2.0"
-    compile "org.grails.plugins:ala-bootstrap3:3.0.0"
+    compile "org.grails.plugins:ala-bootstrap3:3.0.4"
 
     compile 'org.grails.plugins:external-config:1.1.1'
 
     compile 'de.codecentric:spring-boot-admin-starter-client:1.5.3'
     compile 'org.springframework.boot:spring-boot-starter-security'
+
+    // HA
+    compile('org.grails.plugins:spring-session-helper:0.1-SNAPSHOT'){
+        changing = true
+    }
+    compile 'org.springframework.boot:spring-boot-starter-data-redis'
+    compile 'org.springframework.session:spring-session-data-redis'
 
     // regular jar dependencies
     runtime 'mysql:mysql-connector-java:5.1.42'
