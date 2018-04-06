@@ -90,12 +90,18 @@ grails:
                 scriptlets: html
                 taglib: none
                 staticparts: none
+    cache:
+        enabled: true
+        ehcache:
+            cacheManagerName: 'apikey-cache-manager'
+            ehcacheXmlLocation: 'classpath:apikey-ehcache.xml'
+            reloadable: false
 endpoints:
     jmx:
         unique-names: true
 ---
 skin:
-    layout: "main"
+    layout: "ala-main"
     fluidLayout: false
     orgNameLong: "Atlas of Living Australia"
     orgNameShort: "ALA"
