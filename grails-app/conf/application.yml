@@ -37,7 +37,11 @@ endpoints:
     enabled: false
     jmx:
         enabled: true
-
+---
+flyway:
+    enabled: true
+    baselineOnMigrate: true
+    baselineVersion: 1
 ---
 grails:
     mime:
