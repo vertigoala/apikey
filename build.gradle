@@ -70,9 +70,7 @@ dependencies {
     compile 'org.springframework.boot:spring-boot-starter-security'
 
     // HA
-    compile('org.grails.plugins:spring-session-helper:0.1-SNAPSHOT'){
-        changing = true
-    }
+    compile 'org.grails.plugins:spring-session-helper:1.0'
     compile 'org.springframework.boot:spring-boot-starter-data-redis'
     compile 'org.springframework.session:spring-session-data-redis'
 
