@@ -74,6 +74,9 @@ dependencies {
     compile 'org.springframework.boot:spring-boot-starter-data-redis'
     compile 'org.springframework.session:spring-session-data-redis'
 
+    // Spring Security to secure actuator endpoints
+    compile 'org.springframework.security:spring-security-web'
+
     // regular jar dependencies
     compile "org.flywaydb:flyway-core:4.2.0"
     runtime 'mysql:mysql-connector-java:5.1.42'
