@@ -4,8 +4,6 @@ import org.springframework.web.context.request.RequestContextHolder
 
 class LocalAuthService {
 
-    def serviceMethod() {}
-
     def isAdmin() {
         def authorities = RequestContextHolder.currentRequestAttributes()?.getUserPrincipal()?.attributes?.authority
         if(authorities){

@@ -53,7 +53,7 @@
                 <h3 class="panel-title">Check an API key using webservices</h3>
             </div>
             <div class="panel-body">
-                <g:form mapping="wsCheck" method="get">
+                <g:form controller="checkKey" action="webserviceCheck" method="get">
                     <div class="form-group">
                         <label>Key</label>
                         <input class="form-control" type="text" size="36" width="200" name="apikey"/>

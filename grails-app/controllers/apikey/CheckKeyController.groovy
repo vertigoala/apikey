@@ -1,5 +1,7 @@
 package apikey
 
+import grails.converters.JSON
+
 class CheckKeyController {
 
     def index() {}
@@ -13,19 +15,16 @@ class CheckKeyController {
         def result = APIKey.findByApikey(params.apikey)
         if(result){
             response.setStatus(200)
-            render(contentType:"text/json") {
-                [
-                        valid:true,
-                        userId:result.userId,
-                        userEmail: result.userEmail,
-                        app: result.app.name
-                ]
-            }
+            def jsonValue = [
+                    valid:true,
+                    userId:result.userId,
+                    userEmail: result.userEmail,
+                    app: result.app.name
+            ]
+            render(jsonValue as JSON, contentType:"application/json")
         } else {
             response.setStatus(200)
-            render(contentType:"text/json") {
-                [valid:false]
-            }
+            render([valid:false] as JSON, contentType:"application/json")
         }
     }
 }

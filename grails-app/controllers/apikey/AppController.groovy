@@ -14,7 +14,7 @@ class AppController {
                 def userDetails = localAuthService.userDetails()
                 app.userId =  userDetails[0]
                 app.userEmail = userDetails[0]
-                app.save(true)
+                app.save(validate: true, flush: true)
                 if(app.hasErrors()){
                     ["success":false, authorised:true]
                 } else {

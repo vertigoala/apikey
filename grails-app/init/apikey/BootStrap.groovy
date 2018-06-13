@@ -9,8 +9,8 @@ class BootStrap {
     }
 
     private def preloadQueries() {
-        def appNames = []
-        App.findAll().each {appNames << it.name}
+        def apps = App.findAll()
+        def appNames = apps*.name.toSet()
         if(!appNames.contains("collectory")){ new App([name:"collectory"]).save() }
         if(!appNames.contains("biocache")){ new App([name:"biocache"]).save() }
         if(!appNames.contains("spatialportal")){ new App([name:"spatialportal"]).save() }

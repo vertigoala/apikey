@@ -119,6 +119,7 @@ skin:
 security:
     cas:
         uriFilterPattern: "/testAuth.*,/upload.*,/getKey/submit,/app/addAnApp"
+        authenticateOnlyIfLoggedInFilterPattern: "/"
     filterOrder: 0
     basic:
         enabled: true
