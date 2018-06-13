@@ -20,7 +20,7 @@ class GetKeyController {
             key.userEmail = localAuthService.userDetails()[0]
             App app = App.findByName(params.appName)
             key.app = app
-            key.save(true)
+            key.save(validate: true, flush: true)
 
             if(key.hasErrors()){
                 key.errors.each { println it }
