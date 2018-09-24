@@ -62,7 +62,7 @@ dependencies {
     // grails plugins
     compile "org.grails.plugins:ala-auth:3.0.3"
 //    compile "org.grails.plugins:ala-admin-plugin:2.0"
-    compile "org.grails.plugins:ala-bootstrap3:3.0.4"
+    compile "org.grails.plugins:ala-bootstrap3:3.0.6"
 
     compile 'org.grails.plugins:external-config:1.1.1'
 
