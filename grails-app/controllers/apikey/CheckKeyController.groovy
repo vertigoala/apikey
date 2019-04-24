@@ -14,6 +14,7 @@ class CheckKeyController {
     def webserviceCheck(){
         def result = APIKey.findByApikey(params.apikey)
         if(result){
+            log.debug "Valid apikey request apikey=" + params.apikey + " userId=" + result.userId + " userEmail=" + result.userEmail + " app=" + result.app.name
             response.setStatus(200)
             def jsonValue = [
                     valid:true,
@@ -23,6 +24,7 @@ class CheckKeyController {
             ]
             render(jsonValue as JSON, contentType:"application/json")
         } else {
+            log.warn "Invalid apikey request apikey=" + params.apikey
             response.setStatus(200)
             render([valid:false] as JSON, contentType:"application/json")
         }
