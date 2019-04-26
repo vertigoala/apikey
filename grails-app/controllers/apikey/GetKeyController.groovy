@@ -21,7 +21,7 @@ class GetKeyController {
                 log.error "Creating apikey failed due to an error userId=" + localAuthService.userDetails()[1] + " userEmail=" + localAuthService.userDetails()[0] + " app=" + params.appName
                 key.errors.each { println it }
             } else {
-                log.info "Created a new apikey userId=" + localAuthService.userDetails()[1] + " userEmail=" + localAuthService.userDetails()[0] + " app=" + params.appName
+                log.info "Created a new apikey apikey=" + key.apikey + " userId=" + localAuthService.userDetails()[1] + " userEmail=" + localAuthService.userDetails()[0] + " app=" + params.appName
                 render(view: "created", model: [key: key])
             }
         } else {
