@@ -8,11 +8,6 @@ class GetKeyController {
 
     def submit() {
         //check the permissions - only users with ADMIN can request a key
-        log.debug "generating a key"
-        log.debug "user id: " + localAuthService.userDetails()[1]
-        log.debug "user email: " + localAuthService.userDetails()[0]
-        log.debug "params.appName: " + params.appName
-
         if(localAuthService.isAdmin()){
             APIKey key = new APIKey()
             key.apikey = UUID.randomUUID().toString()
@@ -23,11 +18,14 @@ class GetKeyController {
             key.save(validate: true, flush: true)
 
             if(key.hasErrors()){
+                log.error "Creating apikey failed due to an error userId=" + localAuthService.userDetails()[1] + " userEmail=" + localAuthService.userDetails()[0] + " app=" + params.appName
                 key.errors.each { println it }
             } else {
+                log.info "Created a new apikey userId=" + localAuthService.userDetails()[1] + " userEmail=" + localAuthService.userDetails()[0] + " app=" + params.appName
                 render(view: "created", model: [key: key])
             }
         } else {
+            log.warn "Authentication failed when attempting to generate new apikey userId=" + localAuthService.userDetails()[1] + " userEmail=" + localAuthService.userDetails()[0] + " app=" + params.appName
             render(view: "notCreated", model: [requiredRole: "ROLE_ADMIN"])
         }
     }
