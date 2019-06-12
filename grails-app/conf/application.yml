@@ -115,10 +115,12 @@ skin:
     fluidLayout: false
     orgNameLong: "Atlas of Living Australia"
     orgNameShort: "ALA"
+userdetails:
+  baseUrl: https://auth.ala.org.au/userdetails/
 
 security:
     cas:
-        uriFilterPattern: "/testAuth.*,/upload.*,/getKey/submit,/app/addAnApp"
+        uriFilterPattern: "/testAuth.*,/upload.*,/getKey/submit,/app/addAnApp,/apiKey.*"
         authenticateOnlyIfLoggedInFilterPattern: "/"
     filterOrder: 0
     basic:
@@ -189,9 +191,6 @@ hibernate:
 dataSource:
     pooled: true
     jmxExport: true
-    driverClassName: com.mysql.jdbc.Driver
-    username:
-    password:
     properties:
         timeBetweenEvictionRunsMillis: 60000 # milliseconds (default = 5000)
         testOnBorrow: true # default = false
@@ -208,6 +207,7 @@ environments:
     development:
         dataSource:
             dbCreate: update
+            driverClassName: com.mysql.jdbc.Driver
             url: "jdbc:mysql://localhost:3306/apikey"
     test:
         dataSource:
@@ -219,3 +219,4 @@ environments:
     production:
         dataSource:
             dbCreate: none
+            driverClassName: com.mysql.jdbc.Driver

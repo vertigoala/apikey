@@ -41,7 +41,7 @@
                         <input class="form-control" type="text" size="36" width="200" name="apikey"/>
                         <p class="help-block">To check the validity of a check, paste the key in the text box below and hit "Check key"</p>
                     </div>
-                    <g:submitButton name="Check key" class="btn btn-primary"/>
+                    <g:submitButton name="Check key" class="btn btn-primary"/> <g:link controller="apiKey" class="btn btn-link">View keys</g:link>
                 </g:form>
             </div>
         </div>

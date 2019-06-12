@@ -1,0 +1,110 @@
+package apikey
+
+import grails.test.mixin.TestFor
+import org.grails.web.servlet.mvc.SynchronizerTokensHolder
+import spock.lang.Specification
+
+/**
+ * See the API for {@link grails.test.mixin.web.ControllerUnitTestMixin} for usage instructions
+ */
+@TestFor(ApiKeyController)
+class ApiKeyControllerSpec extends Specification {
+
+    def setup() {
+    }
+
+    def cleanup() {
+    }
+
+    void "test index happy path"() {
+        given:
+        App app = new App(name: 'a', userEmail: 'a@.b.net', userId: '1234', dateCreated: new Date())
+        List<APIKey> apiKeys = [
+                new APIKey(apikey: '123456', app: app, dateCreated: new Date(), userId: '1234', userEmail: 'a@b.net', enabled: true)
+        ]
+
+        def apiKeyService = Mock(ApiKeyService)
+        controller.apiKeyService = apiKeyService
+
+        request.method = 'GET'
+        request.addUserRole('ROLE_ADMIN')
+        request.addHeader('Accept', 'text/html')
+        params['max'] = 10
+        params['offset'] = 10
+        params['sort'] = 'userId'
+        params['order'] = 'desc'
+
+        when:
+        controller.index()
+
+        then: "response is successful"
+        1 * apiKeyService.findAllKeys('userId','desc',10,10) >> apiKeys
+        status == 200
+        model.APIKeyList
+        model.APIKeyList == apiKeys
+    }
+
+    void "test index no role"() {
+        given:
+        request.addUserRole('ROLE_USER')
+
+        when:
+        controller.index()
+
+        then:
+        status == 403
+    }
+
+    void "test enableKey GET"() {
+        given:
+        request.method = 'GET'
+
+        when:
+        controller.enableKey()
+
+        then:
+        status == 405
+    }
+
+    void "test enableKey no role"() {
+        given:
+        request.method = 'POST'
+        request.addUserRole('ROLE_USER')
+
+        when:
+        controller.enableKey()
+
+        then:
+        status == 403
+    }
+
+    void "test enableKey"() {
+        given:
+        def apiKeyService = Mock(ApiKeyService)
+        controller.apiKeyService = apiKeyService
+
+        App app = new App(name: 'a', userEmail: 'a@.b.net', userId: '1234', dateCreated: new Date())
+
+        def token = SynchronizerTokensHolder.store(session)
+        params[SynchronizerTokensHolder.TOKEN_URI] = '/apiKey/index'
+        params[SynchronizerTokensHolder.TOKEN_KEY] = token.generateToken(params[SynchronizerTokensHolder.TOKEN_URI])
+
+        request.method = 'POST'
+        request.remoteUser = 'a@b.net'
+        request.addUserRole('ROLE_ADMIN')
+        params['key'] = '123456'
+        params['enabled'] = 'true'
+        params['max'] = 10
+        params['order'] = 'desc'
+
+        when:
+        controller.enableKey()
+
+        then:
+        1 * apiKeyService.enableKey('123456', true) >> new APIKey(apikey: '123456', enabled: true, app: app, dateCreated: new Date(), userId: '1234', userEmail: 'a@b.net',)
+        status == 302
+        response.redirectedUrl.startsWith('/apiKey/index')
+        response.redirectedUrl.contains('max=10')
+        response.redirectedUrl.contains('order=desc')
+    }
+}

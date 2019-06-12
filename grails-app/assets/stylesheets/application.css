@@ -5,3 +5,12 @@
 #main .panel-title {
     margin-bottom: 0;
 }
+
+th.sortable.sorted a:after {
+    display:inline-block;
+    content: "\00a0↓";
+}
+
+th.sortable.sorted.desc a:after {
+    content: "\00a0↑";
+}

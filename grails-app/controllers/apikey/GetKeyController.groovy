@@ -13,6 +13,7 @@ class GetKeyController {
             key.apikey = UUID.randomUUID().toString()
             key.userId = localAuthService.userDetails()[1]
             key.userEmail = localAuthService.userDetails()[0]
+            key.enabled = true
             App app = App.findByName(params.appName)
             key.app = app
             key.save(validate: true, flush: true)
