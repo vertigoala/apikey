@@ -116,7 +116,7 @@ skin:
     orgNameLong: "Atlas of Living Australia"
     orgNameShort: "ALA"
 userdetails:
-  baseUrl: https://auth.ala.org.au/userdetails/
+  url: https://auth.ala.org.au/userdetails
 
 security:
     cas:
@@ -184,23 +184,15 @@ environments:
 hibernate:
     cache:
         queries: false
-        use_second_level_cache: true
+        use_second_level_cache: false
         use_query_cache: false
-        region.factory_class: org.hibernate.cache.ehcache.SingletonEhCacheRegionFactory
 
 dataSource:
     pooled: true
     jmxExport: true
+    type: "com.zaxxer.hikari.HikariDataSource"
     properties:
-        timeBetweenEvictionRunsMillis: 60000 # milliseconds (default = 5000)
-        testOnBorrow: true # default = false
-        testOnReturn: false # default = false
-        testWhileIdle: true # default = false
-        validationQuery: /* ping */ SELECT 1
-        validationQueryTimeout: 10 # seconds (default = -1 i.e. disabled)
-        removeAbandoned: true # # default = false
-        removeAbandonedTimeout: 300 # seconds (default = 60)
-        logAbandoned: true # adds some overhead to every borrow from the pool, disable if it becomes a performance issue
+
 
 # environment specific settings
 environments:
