@@ -1,13 +1,9 @@
 package apikey
 
 import grails.test.hibernate.HibernateSpec
-import grails.test.mixin.TestFor
+import grails.testing.services.ServiceUnitTest
 
-/**
- * See the API for {@link grails.test.mixin.services.ServiceUnitTestMixin} for usage instructions
- */
-@TestFor(ApiKeyService)
-class ApiKeyServiceSpec extends HibernateSpec {
+class ApiKeyServiceSpec extends HibernateSpec implements ServiceUnitTest<ApiKeyService> {
 
     def setup() {
         service.transactionManager = transactionManager

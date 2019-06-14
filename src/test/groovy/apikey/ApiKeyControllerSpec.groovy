@@ -1,14 +1,10 @@
 package apikey
 
-import grails.test.mixin.TestFor
+import grails.testing.web.controllers.ControllerUnitTest
 import org.grails.web.servlet.mvc.SynchronizerTokensHolder
 import spock.lang.Specification
 
-/**
- * See the API for {@link grails.test.mixin.web.ControllerUnitTestMixin} for usage instructions
- */
-@TestFor(ApiKeyController)
-class ApiKeyControllerSpec extends Specification {
+class ApiKeyControllerSpec extends Specification implements ControllerUnitTest<ApiKeyController> {
 
     def setup() {
     }
@@ -70,6 +66,23 @@ class ApiKeyControllerSpec extends Specification {
         given:
         request.method = 'POST'
         request.addUserRole('ROLE_USER')
+
+        when:
+        controller.enableKey()
+
+        then:
+        status == 403
+    }
+
+    void "test enableKey no token"() {
+        given:
+        request.method = 'POST'
+        request.addUserRole('ROLE_ADMIN')
+
+        def token = SynchronizerTokensHolder.store(session)
+        params[SynchronizerTokensHolder.TOKEN_URI] = '/apiKey/index'
+        def tokenKey = token.generateToken(params[SynchronizerTokensHolder.TOKEN_URI])
+        params[SynchronizerTokensHolder.TOKEN_KEY] = 'asdf'
 
         when:
         controller.enableKey()
