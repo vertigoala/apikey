@@ -1,6 +1,9 @@
 package apikey
 
+import au.org.ala.web.SSO
 import grails.converters.JSON
+
+import javax.servlet.http.HttpServletRequest
 
 class CheckKeyController {
 
@@ -8,6 +11,12 @@ class CheckKeyController {
 
     def index() {}
 
+//    @Override
+//    HttpServletRequest getRequest() {
+//        return null
+//    }
+
+    @SSO(gateway = true)
     def checkKey() {
         def result = APIKey.findByApikey(params.apikey)
         [valid:result!=null && result.enabled, key:result]

@@ -9,6 +9,12 @@ class UrlMappings {
 				// apply constraints here
 			}
 		}
+		"/admin/$controller/$action?/$id?"{
+			namespace = 'admin'
+			constraints {
+				// apply constraints here
+			}
+		}
 		"/"(view:"/index")
 		"500"(view:'/error')
 	}

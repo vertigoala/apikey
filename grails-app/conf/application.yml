@@ -33,6 +33,9 @@ spring:
     session:
         store-type: none
         disable-redis-config-action: false
+        grails:
+          mutableAttributes:
+            - SYNCHRONIZER_TOKENS_HOLDER
 server:
   use-forward-headers: true
   tomcat:
@@ -120,8 +123,8 @@ userdetails:
 
 security:
     cas:
-        uriFilterPattern: "/testAuth.*,/upload.*,/getKey/submit,/app/addAnApp,/apiKey.*"
-        authenticateOnlyIfLoggedInFilterPattern: "/"
+        uriFilterPattern: ["/testAuth","/upload"]
+        authenticateOnlyIfLoggedInFilterPattern: ["/"]
     filterOrder: 0
     basic:
         enabled: true
@@ -200,7 +203,7 @@ environments:
         dataSource:
             dbCreate: update
             driverClassName: com.mysql.jdbc.Driver
-            url: "jdbc:mysql://localhost:3306/apikey"
+            url: "jdbc:mysql://localhost:3306/apikey?useSSL=false"
     test:
         dataSource:
             dbCreate: update

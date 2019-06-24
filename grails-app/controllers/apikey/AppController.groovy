@@ -1,28 +1,34 @@
 package apikey
 
+import au.org.ala.web.AlaSecured
+import au.org.ala.web.CASRoles
+import au.org.ala.web.SSO
+
 class AppController {
 
     LocalAuthService localAuthService
 
     def index() {}
 
-    def addAnApp(){
+    @SSO
+    @AlaSecured(value = CASRoles.ROLE_ADMIN, statusCode = 403)
+    def addAnApp() {
         def result = App.findByName(params.name)
-        if(!result){
-            if(localAuthService.isAdmin()){
+        if (!result) {
+//            if (request.isUserInRole(CASRoles.ROLE_ADMIN)) {
                 App app = new App([name:params.name])
                 def userDetails = localAuthService.userDetails()
                 app.userId =  userDetails[0]
                 app.userEmail = userDetails[0]
                 app.save(validate: true, flush: true)
-                if(app.hasErrors()){
+                if (app.hasErrors()) {
                     ["success":false, authorised:true]
                 } else {
                     ["success":true, app:app, authorised:true]
                 }
-            } else {
-                ["success":false, authorised:false]
-            }
+//            } else {
+//                ["success":false, authorised:false]
+//            }
         } else {
             ["success":false]
         }

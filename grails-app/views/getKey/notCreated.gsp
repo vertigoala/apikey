@@ -9,7 +9,7 @@
 <div class="row">
     <div class="col-md-9" id="page-body" role="main">
         <h1>Key not created</h1>
-        <p>User needs to be logged in and to have the role ${requiredRole}</p>
+        <p>User needs to be logged in and to have the role ROLE_ADMIN</p>
     </div>
 </div>
 </body>

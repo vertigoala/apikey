@@ -40,17 +40,6 @@ class ApiKeyControllerSpec extends Specification implements ControllerUnitTest<A
         model.APIKeyList == apiKeys
     }
 
-    void "test index no role"() {
-        given:
-        request.addUserRole('ROLE_USER')
-
-        when:
-        controller.index()
-
-        then:
-        status == 403
-    }
-
     void "test enableKey GET"() {
         given:
         request.method = 'GET'
@@ -60,18 +49,6 @@ class ApiKeyControllerSpec extends Specification implements ControllerUnitTest<A
 
         then:
         status == 405
-    }
-
-    void "test enableKey no role"() {
-        given:
-        request.method = 'POST'
-        request.addUserRole('ROLE_USER')
-
-        when:
-        controller.enableKey()
-
-        then:
-        status == 403
     }
 
     void "test enableKey no token"() {

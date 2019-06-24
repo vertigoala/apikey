@@ -64,7 +64,7 @@ if (Environment.isDevelopmentMode() && targetDir != null) {
 }
 jmxConfigurator()
 
-root(WARN, [TOMCAT_LOG])
+root(INFO, [TOMCAT_LOG])
 [
         (OFF): [],
         (ERROR): [
@@ -75,9 +75,11 @@ root(WARN, [TOMCAT_LOG])
                 'de.codecentric.boot.admin',
                 'grails.plugin.externalconfig.ExternalConfig',
                 'grails.app',
-                'au.org.ala'
+                'au.org.ala',
+                'apikey'
         ],
         (DEBUG): [
+
         ],
         (TRACE): [
         ]
