@@ -1,10 +1,11 @@
 package apikey
 
-import grails.transaction.Transactional
+import grails.gorm.transactions.Transactional
 
 @Transactional
 class ApiKeyService {
 
+    @Transactional(readOnly = true)
     List<APIKey> findAllKeys(String sort, String order, int max, int offset) {
         final keys = APIKey.list(sort: sort, order: order, max: max, offset: offset, fetch: [app: 'eager'], readOnly: true)
         return keys
