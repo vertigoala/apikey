@@ -13,7 +13,6 @@ class ApiKeyController {
 
     def apiKeyService
 
-
     def index() {
         def max = params.int('max', 100)
         def offset = params.int('offset', 0)

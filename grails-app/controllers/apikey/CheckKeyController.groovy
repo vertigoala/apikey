@@ -11,11 +11,6 @@ class CheckKeyController {
 
     def index() {}
 
-//    @Override
-//    HttpServletRequest getRequest() {
-//        return null
-//    }
-
     @SSO(gateway = true)
     def checkKey() {
         def result = APIKey.findByApikey(params.apikey)
