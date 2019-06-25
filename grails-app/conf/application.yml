@@ -201,7 +201,7 @@ dataSource:
 environments:
     development:
         dataSource:
-            dbCreate: update
+            dbCreate: validate
             driverClassName: com.mysql.jdbc.Driver
             url: "jdbc:mysql://localhost:3306/apikey?useSSL=false"
     test:
@@ -213,5 +213,5 @@ environments:
             url: "jdbc:h2:mem:testDb;MVCC=TRUE;LOCK_TIMEOUT=10000"
     production:
         dataSource:
-            dbCreate: none
+            dbCreate: validate
             driverClassName: com.mysql.jdbc.Driver
