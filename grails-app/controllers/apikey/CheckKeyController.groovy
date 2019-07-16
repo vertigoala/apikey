@@ -3,8 +3,6 @@ package apikey
 import au.org.ala.web.SSO
 import grails.converters.JSON
 
-import javax.servlet.http.HttpServletRequest
-
 class CheckKeyController {
 
     def apiKeyService
@@ -17,7 +15,7 @@ class CheckKeyController {
         [valid:result!=null && result.enabled, key:result]
     }
 
-    def webserviceCheck(){
+    def webserviceCheck() {
         final apikey = params['apikey']
         final remoteAddr = request.remoteAddr
         final result = apiKeyService.validateKey(apikey, remoteAddr)

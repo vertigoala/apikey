@@ -117,7 +117,7 @@ skin:
     fluidLayout: false
     orgNameLong: "Atlas of Living Australia"
     orgNameShort: "ALA"
-userdetails:
+userDetails:
   url: https://auth.ala.org.au/userdetails
 
 security:

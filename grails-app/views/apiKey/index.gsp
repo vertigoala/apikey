@@ -29,7 +29,7 @@
             <g:each in="${APIKeyList}">
                 <tr>
                     <td>${it.app.name}</td>
-                    <td><u:link baseProperty="userdetails.url" paths="['admin','user','show',it.userId]">${it.userId}</u:link></td>
+                    <td><u:link baseProperty="userDetails.url" paths="['admin','user','show',it.userId]">${it.userId}</u:link></td>
                     <td>${it.userEmail}</td>
                     <td><g:formatDate date="${it.dateCreated}" /></td>
                     <td>${it.apikey}</td>
