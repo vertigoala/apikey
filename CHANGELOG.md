@@ -1,8 +1,7 @@
 # Change Log
 
-## [Unreleased](https://github.com/AtlasOfLivingAustralia/apikey/tree/HEAD)
-
-[Full Changelog](https://github.com/AtlasOfLivingAustralia/apikey/compare/1.4...HEAD)
+## [1.5](https://github.com/AtlasOfLivingAustralia/apikey/tree/1.5) (2019-07-19)
+[Full Changelog](https://github.com/AtlasOfLivingAustralia/apikey/compare/1.4...1.5)
 
 **Implemented enhancements:**
 
