@@ -1,0 +1,29 @@
+#
+# ALA Image Service
+#
+version: '3'
+
+services:
+
+  mysqlapidb:
+    image: mysql:5.7
+    container_name: mysqlapidb
+    env_file: ./env/.envapi
+    volumes:
+      - db_data_apikey:/var/lib/mysql
+      - ./data/mysql/:/docker-entrypoint-initdb.d/
+
+  apikey:
+    build:
+      context: .
+    image: vertigoala/apikey
+    container_name: apikey
+    ports:
+      - 8080:8080
+    depends_on:
+      - mysqlapidb
+    volumes:
+      - ./data/apikey/config/apikey-config.properties:/data/apikey/config/apikey-config.properties
+
+volumes:
+  db_data_apikey:
